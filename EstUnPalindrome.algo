@@ -1,0 +1,27 @@
+ALGORITHM MonPalindrome
+VAR
+    tab_Words :string;
+    i :INTEGER;
+BEGIN
+    FUNCTION EstPalindrome(monTab: string, i:INTEGER) : BOOLEAN
+    VAR
+    BEGIN
+        IF ( i === monTab.lenght /2) THEN
+            RETURN true;
+        ELSE_IF (monTab[i] === monTab[monTab.lenght-i-1]) THEN
+            EstPalindrome(monTab, i+1);
+        ELSE
+            RETURN false ;
+        END_IF
+    END
+    i :=0;
+    Write("Saisir le mot:");
+    Read(tab_Words);
+    IF (tab_Words.lenght == 0 ou tab_Words.lenght == 1) THEN
+        Write("Le mot " + tab_Words + "n'est pas un palindrome.");
+    ELSE_IF (EstPalindrome (tab_Words,i)) THEN
+        Write("Le mot " + tab_Words + "est un palindrome.");
+    ELSE_IF (EstPalindrome (tab_Words,i) = false) THEN
+        Write("Le mot " + tab_Words + "n'est pas un palindrome.");
+    END_IF
+END
