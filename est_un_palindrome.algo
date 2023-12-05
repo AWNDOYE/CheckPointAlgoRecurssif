@@ -1,0 +1,43 @@
+/*Checkpoint Objective
+Nom : Est un palindrome.  
+Description :  
+    Teste si un mot est un palindrome. Un mot est palindrome s'il peut être lu de gauche à droite ou de droite à gauche : gag ; kayak ; php ; radar ;....
+Instructions :
+    Décomposition du traitement : on compare les caractères situés aux extrémités du mot :
+
+    Si égalité on teste le reste du mot
+    Si différence on arrête
+    Condition d'arrêt : un mot vide ou un mot contenant un seul caractère est un palindrome.*/
+ALGORITHM est_un_palindrome
+VAR
+    tab_my_Word : STRING;
+    i : INTEGER;
+BEGIN
+    //Fonction récursive
+    FUNCTION palindromeTrue(tabString :STRING,i : INTEGER) : BOOLEAN
+    VAR
+    BEGIN
+        //test si nous sommes au milieu du mot - condition d'arrêt de la récursivité
+        IF (i === tabString.lenght/2) THEN
+            RETURN true;
+            //tester égalité lettre
+        ELSE IF (tabString[i] === tabString[tabString.lenght-i-1]) THEN
+            palindromeTrue(tabString,i+1)
+        ELSE
+            RETURN false ;
+        END_IF
+    END
+    i := 0;
+    Write("Test palindrome / saisir mot :"); // saisit du mot
+    Read(tab_my_Word); //stockage du mot dans notre tableau
+    //test si l'utilisateur saisit une lettre ou rien
+    IF ((tab_my_Word.lenght === 0) OR (tab_my_Word.lenght === 1)) THEN
+        Write( " le mot :"+ tab_my_Word + " n'est pas un palindrome.");
+        //tester si le mot saisit est un palindrome
+    ELSE IF (palindromeTrue(tab_my_Word,i) === true) THEN
+        Write( " le mot :"+ tab_my_Word + " est un palindrome");
+
+    ELSE IF (palindromeTrue(tab_my_Word,i) === false) THEN
+        Write( " le mot :"+ tab_my_Word + " n'est pas un palindrome");
+    END_IF
+END
